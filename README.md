@@ -1,4 +1,4 @@
-# -commerce
+# E-commerce
 
 O projeto foi um desafio do site Frontendmentor de construir um clone de uma página de e-commerce de sapatos.
 Onde devo criar interações com carousel , modal , adicionar e excluir item do carrinho de compras.
