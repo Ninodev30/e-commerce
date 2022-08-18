@@ -8,6 +8,7 @@ import ImageArrowEndOrange from '../images/icon-next-orange.svg';
 
 export const Nav = styled.header`
     height:7vh;
+    width: 80vw;
     display:flex;
     align-items:center;
     justify-content: space-between ;
@@ -16,8 +17,13 @@ export const Nav = styled.header`
         padding:0;
     }
     #desktopHeaderSubtitles{
+        width: 60%;
         display: none;
         font-size: 0.8rem;
+        margin-left: 2rem;
+        h2{
+            margin: 0.5rem;
+        }
     }
     div{
         #menu{

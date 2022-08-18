@@ -81,7 +81,7 @@ const GlobalStyle = createGlobalStyle`
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                width:40vw;
+                width:45vw;
                 h3{
                     font-size: 1.2rem;
                 }
@@ -129,7 +129,7 @@ const GlobalStyle = createGlobalStyle`
             justify-content: center;
             background-color: rgba(0,0,0,0.75);
             .modalDesktop-container{
-                width: 28vw;
+                width: 28rem;
                 display: flex;
                 flex-direction: column;
                 align-items:center;
@@ -167,7 +167,7 @@ const GlobalStyle = createGlobalStyle`
         }
         #containerArrowStart
         ,#containerArrowEnd{
-            display: none;
+            display: none !important;
         }
     }
     
