@@ -35,6 +35,14 @@ const Carousel = () => {
 
     }
 
+    const rollCarouselStart = () => {
+        centralImage > 0 ? setCentralImage(centralImage - 1) : setCentralImage(3);
+    }
+
+    const rollCarouselEnd = () => {
+        centralImage < 3 ? setCentralImage(centralImage + 1) : setCentralImage(0);
+    }
+
     const Images = [
         Image0,
         Image1,
@@ -116,16 +124,12 @@ const Carousel = () => {
             <>
 
                 <span id="containerArrowStart" className='left'
-                    onClick={() => {
-                        centralImage > 0 ? setCentralImage(centralImage - 1) : setCentralImage(3);
-                    }}>
+                    onClick={rollCarouselStart}>
                     <div id="arrowStart"></div>
                 </span>
 
                 <span id="containerArrowEnd" className='right'
-                    onClick={() => {
-                        centralImage < 3 ? setCentralImage(centralImage + 1) : setCentralImage(0);
-                    }}>
+                    onClick={rollCarouselEnd}>
                     <div id="arrowEnd"></div>
                 </span>
 
