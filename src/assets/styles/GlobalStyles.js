@@ -65,7 +65,7 @@ const GlobalStyle = createGlobalStyle`
         #container{
             display: flex;
             justify-content: space-around;
-            margin-top:7vh;
+            margin:7vh 3vw;
             #carousel{
                 #imageMain{
                     height:26rem !important;

@@ -8,7 +8,6 @@ import ImageArrowEndOrange from '../images/icon-next-orange.svg';
 
 export const Nav = styled.header`
     height:7vh;
-    width: 80vw;
     display:flex;
     align-items:center;
     justify-content: space-between ;
