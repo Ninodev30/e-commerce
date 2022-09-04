@@ -28,6 +28,7 @@ export const Nav = styled.header`
         #menu{
             width: 1.2rem;
             margin-right:0.5rem;
+            cursor: pointer;
         }
         .title{
             width:10rem;

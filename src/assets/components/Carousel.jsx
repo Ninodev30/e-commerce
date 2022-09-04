@@ -14,34 +14,16 @@ import Image3Thumbnail from '../images/image-product-4-thumbnail.jpg'
 const Carousel = () => {
 
     const [centralImage, setCentralImage] = useState(0);
-    const [viewModal, setViewModal] = useState(false);
-
-    const showModal = () => {
-        setViewModal(true);
-    }
-
-    const hideModal = () => {
-        setViewModal(false);
-    }
+    const [isViewModal, isSetViewModal] = useState(false);
 
     const clickOutModal = (event) => {
-
         const modalDesktop = document.getElementById("modalDesktop");
         const carouselContainer = document.getElementById("carouselContainer");
-
-        if (event.target === modalDesktop && event.target.parentNode === carouselContainer) {
-            hideModal();
-        }
-
+        if (event.target === modalDesktop && event.target.parentNode === carouselContainer) isSetViewModal(false);
     }
 
-    const rollCarouselStart = () => {
-        centralImage > 0 ? setCentralImage(centralImage - 1) : setCentralImage(3);
-    }
-
-    const rollCarouselEnd = () => {
-        centralImage < 3 ? setCentralImage(centralImage + 1) : setCentralImage(0);
-    }
+    const rollCarouselStart = () => {centralImage > 0 ? setCentralImage(centralImage - 1) : setCentralImage(3);}
+    const rollCarouselEnd = () => {centralImage < 3 ? setCentralImage(centralImage + 1) : setCentralImage(0);}
 
     const Images = [
         Image0,
@@ -58,127 +40,75 @@ const Carousel = () => {
     ]
 
     const renderImagesThumbnails = (numberOfImage) => {
-
-        if (centralImage === numberOfImage) {
+        if (centralImage === numberOfImage)
             return (
-
                 <ThumbContainer border>
-
                     <Thumbnails opacity="true" src={ImagesThumbnails[numberOfImage]}
-                        onClick={() => {
-                            setCentralImage(numberOfImage);
-                        }}></Thumbnails>
-
+                     onClick={() => {setCentralImage(numberOfImage);}}/>
                 </ThumbContainer>
-
             )
-        }
-        else {
-            return (
-
-                <ThumbContainer>
-
-                    <Thumbnails src={ImagesThumbnails[numberOfImage]}
-                        onClick={() => {
-                            setCentralImage(numberOfImage);
-                        }}></Thumbnails>
-
-                </ThumbContainer>
-
-            )
-        }
-
+        return (
+            <ThumbContainer>
+                <Thumbnails src={ImagesThumbnails[numberOfImage]}
+                 onClick={() => {setCentralImage(numberOfImage);}}/>
+            </ThumbContainer>
+        )
     }
 
     const carouselScript = (lifeOfModal) => {
-
         return (
-
             <div id="carousel">
-
                 <img id='imageMain' src={Images[lifeOfModal]} alt="main" onClick={() => {
-                    if (window.matchMedia("(min-width: 1024px)").matches) {
-                        showModal();
-                    }
-                }}></img>
+                if (window.matchMedia("(min-width: 1024px)").matches)isSetViewModal(true)}}/>
 
                 <div id="thumbnails">
-
                     {renderImagesThumbnails(0)}
                     {renderImagesThumbnails(1)}
                     {renderImagesThumbnails(2)}
                     {renderImagesThumbnails(3)}
-
                 </div>
-
             </div>
-
         )
-
     }
 
     const arrows = () => {
-
         return (
-
             <>
-
                 <span id="containerArrowStart" className='left'
-                    onClick={rollCarouselStart}>
+                onClick={rollCarouselStart}>
                     <div id="arrowStart"></div>
                 </span>
 
                 <span id="containerArrowEnd" className='right'
-                    onClick={rollCarouselEnd}>
+                onClick={rollCarouselEnd}>
                     <div id="arrowEnd"></div>
                 </span>
-
             </>
-
         )
-
     }
 
     return (
-
         <>
-
             <CarouselContainer id="carouselContainer" onMouseUp={clickOutModal}>
-
                 <div>
-                    {
-                        viewModal === true ? (
-                            carouselScript(0)
-                        ) : (
-                            carouselScript(centralImage)
-                        )
-                    }
+                    {isViewModal === true ? (carouselScript(0)) : (carouselScript(centralImage))}
                 </div>
-
                 {arrows()}
 
                 <div id='modalDesktop'
-                    style={viewModal === true ? { display: "flex" } : { display: "none" }}>
+                    style={isViewModal === true ? { display: "flex" } : { display: "none" }}>
 
                     <div className='modalDesktop-container'>
-
-                        <div id="closeContainer" onClick={hideModal}></div>
-
+                        <div id="closeContainer" onClick={() => isSetViewModal(false)}/>
                         <div className='modal-roll'>
-
                             {carouselScript(centralImage)}
                             {arrows()}
-
                         </div>
-
                     </div>
 
                 </div>
-
             </CarouselContainer>
-
         </>
-
     )
 
 }
